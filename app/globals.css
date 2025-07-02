@@ -1,0 +1,513 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Tipografía para títulos principales - MÁS GRANDES */
+h1 {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-size: 3.5rem !important;
+}
+
+/* Subtítulos principales - MÁS GRANDES */
+h2 {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 2.5rem !important;
+}
+
+h3 {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  font-size: 1.8rem !important;
+}
+
+h4 {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0;
+  font-size: 1.4rem !important;
+}
+
+h5,
+h6 {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-size: 1.2rem !important;
+}
+
+/* TIPOGRAFÍA ESPECÍFICA PARA TÍTULOS DE SECCIÓN DE PROYECTOS */
+/* Solo aplicar a títulos dentro de secciones de proyectos */
+#projects .text-xl.font-semibold,
+.project-section-title {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 400 !important; /* Mucho más ligero */
+  font-size: 1.35rem !important; /* Ligeramente más grande */
+  letter-spacing: 0.5px !important; /* Más espaciado */
+  text-transform: uppercase !important; /* Mayúsculas */
+  color: #374151 !important; /* Gris más suave */
+  line-height: 1.4 !important;
+}
+
+/* Variantes de color para diferentes secciones de proyectos */
+#projects .text-xl.font-semibold.text-blue-900,
+.project-section-title.text-blue-900 {
+  color: #1e3a8a !important;
+  font-weight: 450 !important;
+}
+
+#projects .text-xl.font-semibold.text-green-900,
+.project-section-title.text-green-900 {
+  color: #14532d !important;
+  font-weight: 450 !important;
+}
+
+#projects .text-xl.font-semibold.text-purple-900,
+.project-section-title.text-purple-900 {
+  color: #581c87 !important;
+  font-weight: 450 !important;
+}
+
+#projects .text-xl.font-semibold.text-gray-900,
+.project-section-title.text-gray-900 {
+  color: #111827 !important;
+  font-weight: 450 !important;
+}
+
+/* TIPOGRAFÍA ESPECIAL PARA TÍTULOS DEL FOOTER */
+.footer-title {
+  font-family: "Georgia", "Times New Roman", "Playfair Display", serif !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 1rem !important;
+  color: #ffffff !important;
+  text-transform: none !important;
+  line-height: 1.3 !important;
+}
+
+/* Palabras destacadas en color - MÁXIMO RESALTE */
+.text-green-600,
+.text-green-500,
+.text-blue-600,
+.text-blue-500,
+.text-emerald-600,
+.text-emerald-500,
+.text-teal-600,
+.text-teal-500 {
+  font-weight: 900 !important;
+  font-size: 1.1em !important;
+  letter-spacing: -0.02em !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  position: relative;
+}
+
+/* Efecto adicional para palabras en color en títulos principales */
+h1 .text-green-600,
+h1 .text-green-500,
+h1 .text-blue-600,
+h1 .text-blue-500,
+h1 .text-emerald-600,
+h1 .text-emerald-500,
+h1 .text-teal-600,
+h1 .text-teal-500 {
+  font-weight: 900 !important;
+  font-size: 1.15em !important;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Para títulos h2 */
+h2 .text-green-600,
+h2 .text-green-500,
+h2 .text-blue-600,
+h2 .text-blue-500,
+h2 .text-emerald-600,
+h2 .text-emerald-500,
+h2 .text-teal-600,
+h2 .text-teal-500 {
+  font-weight: 900 !important;
+  font-size: 1.12em !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Para títulos h3 */
+h3 .text-green-600,
+h3 .text-green-500,
+h3 .text-blue-600,
+h3 .text-blue-500,
+h3 .text-emerald-600,
+h3 .text-emerald-500,
+h3 .text-teal-600,
+h3 .text-teal-500 {
+  font-weight: 900 !important;
+  font-size: 1.1em !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Reducir el peso del texto normal en títulos para crear más contraste */
+h1,
+h2,
+h3 {
+  font-weight: 600 !important;
+}
+
+/* Mantener el peso alto solo para las palabras en color */
+h1 span:not([class*="text-"]),
+h2 span:not([class*="text-"]),
+h3 span:not([class*="text-"]) {
+  font-weight: 600 !important;
+}
+
+/* Efecto hover para palabras en color */
+.text-green-600:hover,
+.text-green-500:hover,
+.text-blue-600:hover,
+.text-blue-500:hover,
+.text-emerald-600:hover,
+.text-emerald-500:hover,
+.text-teal-600:hover,
+.text-teal-500:hover {
+  transform: scale(1.02);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Texto del cuerpo y párrafos */
+p,
+span,
+div {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Texto de descripción y secundario */
+.text-gray-600,
+.text-gray-500,
+.text-muted-foreground {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Estilos para los botones de navegación */
+nav button,
+nav a {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.2px !important;
+  font-size: 1.1rem !important;
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+nav button:hover,
+nav a:hover {
+  font-weight: 500 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Botones principales - EQUILIBRIO PERFECTO */
+button,
+.btn,
+[role="button"],
+a[class*="button"],
+button[class*="Button"],
+.button {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Botones específicos de shadcn/ui */
+.inline-flex.items-center,
+.inline-flex.items-center.justify-center,
+button.inline-flex,
+a.inline-flex {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Hover para todos los botones */
+button:hover,
+.btn:hover,
+[role="button"]:hover,
+a[class*="button"]:hover,
+button[class*="Button"]:hover,
+.button:hover,
+.inline-flex:hover {
+  font-weight: 500 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Forzar estilos en botones con clases específicas de Tailwind */
+.font-medium {
+  font-weight: 450 !important;
+}
+
+.font-semibold {
+  font-weight: 500 !important;
+}
+
+/* Cards y títulos de tarjetas - MÁS GRANDES */
+.card-title,
+[class*="CardTitle"] {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  font-size: 1.5rem !important;
+}
+
+/* Badges y elementos destacados */
+.badge,
+[class*="Badge"] {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px;
+  font-size: 1rem !important;
+}
+
+/* Logo y marca - MÁS GRANDE */
+.text-xl.font-bold {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  font-size: 1.4rem !important;
+}
+
+/* Mejoras para legibilidad - TÍTULOS HERO MÁS GRANDES */
+.text-4xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-size: 4rem !important;
+}
+
+.text-5xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-size: 5rem !important;
+}
+
+.text-6xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-size: 6rem !important;
+}
+
+.text-7xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  font-size: 7.5rem !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-2xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  font-size: 2rem !important;
+}
+
+.text-3xl {
+  font-family: "Inter", "Ubuntu", "Roboto", "Noto Sans", "Liberation Sans", "DejaVu Sans", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  font-size: 2.5rem !important;
+}
+
+/* Estilos adicionales para mejorar la apariencia general */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Títulos con efectos especiales para que se destaquen más */
+h1,
+.text-7xl,
+.text-6xl,
+.text-5xl,
+.text-4xl {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive - Ajustar tamaños en móviles */
+@media (max-width: 768px) {
+  .text-7xl {
+    font-size: 4rem !important;
+  }
+
+  .text-6xl {
+    font-size: 3.5rem !important;
+  }
+
+  .text-5xl {
+    font-size: 3rem !important;
+  }
+
+  .text-4xl {
+    font-size: 2.5rem !important;
+  }
+
+  .text-3xl {
+    font-size: 2rem !important;
+  }
+
+  .text-2xl {
+    font-size: 1.7rem !important;
+  }
+
+  h1 {
+    font-size: 2.5rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Ajustar títulos de sección en móvil */
+  #projects .text-xl.font-semibold,
+  .project-section-title {
+    font-size: 1.2rem !important;
+    letter-spacing: 0.3px !important;
+  }
+
+  .text-green-600,
+  .text-green-500,
+  .text-blue-600,
+  .text-blue-500,
+  .text-emerald-600,
+  .text-emerald-500,
+  .text-teal-600,
+  .text-teal-500 {
+    font-size: 1.08em !important;
+  }
+
+  h1 .text-green-600,
+  h1 .text-green-500,
+  h1 .text-blue-600,
+  h1 .text-blue-500,
+  h1 .text-emerald-600,
+  h1 .text-emerald-500,
+  h1 .text-teal-600,
+  h1 .text-teal-500 {
+    font-size: 1.1em !important;
+  }
+
+  /* Ajustar títulos del footer en móvil */
+  .footer-title {
+    font-size: 1rem !important;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
