@@ -1,7 +1,7 @@
-import { redirect } from 'next/navigation'
-
 export default function Home() {
-  redirect('/agroactiva')
-  
-  return null // Esta línea es importante para TypeScript
+  return (
+    <main>
+      <h1>Bienvenidos a mi sitio escolar</h1>
+    </main>
+  );
 }
