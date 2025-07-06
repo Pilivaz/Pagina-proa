@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -7,36 +8,29 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import {
-  ArrowLeft,
-  Calendar,
-  MapPin,
+  BookOpen,
   Users,
   Award,
-  Lightbulb,
-  Target,
+  Mail,
+  Phone,
+  MapPin,
+  Droplets,
+  Leaf,
   Instagram,
   Facebook,
   MessageCircle,
 } from "lucide-react"
-import { useRouter } from "next/navigation"
 
-export default function AgroactivaPage() {
+export default function SchoolPage() {
   const router = useRouter()
 
+  // Agregar una nueva función para navegar a páginas completas
   const navigateToPage = (path: string) => {
     router.push(path)
     // Scroll to top after navigation
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: "smooth" })
     }, 100)
-  }
-
-  const navigateToHome = () => {
-    router.push("/")
-    // Scroll to top immediately when going to home
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "auto" })
-    }, 50)
   }
 
   const navigateToProject = (projectId: string) => {
@@ -68,27 +62,27 @@ export default function AgroactivaPage() {
                 Escuela Experimental PRoA | Corral de Bustos-Ifflinger
               </span>
             </div>
-            <div className="flex items-center space-x-8">
-              <div className="hidden md:flex space-x-8">
-                <button
-                  onClick={() => navigateToPage("/projects")}
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Proyectos
-                </button>
-                <button
-                  onClick={() => navigateToPage("/contact")}
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  Contáctanos
-                </button>
-              </div>
+            <div className="hidden md:flex space-x-8">
+              <Link href="#about" className="text-gray-600 hover:text-blue-600 transition-colors">
+                Acerca de
+              </Link>
               <button
-                onClick={navigateToHome}
-                className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
+                onClick={() => navigateToPage("/projects")}
+                className="text-gray-600 hover:text-blue-600 transition-colors"
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Volver al inicio
+                Proyectos
+              </button>
+              <button
+                onClick={() => navigateToPage("/agroactiva")}
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Agroactiva
+              </button>
+              <button
+                onClick={() => navigateToPage("/contact")}
+                className="text-gray-600 hover:text-blue-600 transition-colors"
+              >
+                Contáctanos
               </button>
             </div>
           </div>
@@ -100,43 +94,40 @@ export default function AgroactivaPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/agroactiva-entrance.webp"
-            alt="Entrada principal de Agroactiva con multitud de visitantes"
+            src="/images/school-building.jpg"
+            alt="Escuela Experimental PRoA Campus Building"
             fill
             className="object-cover"
             priority
           />
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <Badge
-                variant="secondary"
-                className="bg-white/20 text-white border-white/30 hover:bg-white/30 text-lg px-4 py-2"
-              >
-                <Award className="w-5 h-5 mr-2" />
-                Evento Nacional
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30 hover:bg-white/30">
+                Innovación Educativa desde 2018
               </Badge>
               <h1 className="text-4xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
-                PRoA en
-                <span className="text-green-300 block">Agroactiva 2025</span>
+                Formando los
+                <span className="text-blue-300 block font-bold">Innovadores del mañana</span>
               </h1>
               <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto drop-shadow-md">
-                Nuestra participación en uno de los eventos agropecuarios más importantes de Argentina, donde
-                presentamos nuestros proyectos innovadores ante más de 200,000 visitantes de todo el país y el exterior.
+                En la Escuela Experimental PRoA, combinamos estándares académicos rigurosos con proyectos de
+                investigación práctica, preparando a los estudiantes para los desafíos del futuro a través de
+                experiencias de aprendizaje innovadoras.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700 text-white shadow-lg"
+                className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg"
                 onClick={() => navigateToPage("/projects")}
               >
-                Ver Nuestros Proyectos
+                Ver Proyectos
               </Button>
               <Button
                 variant="outline"
@@ -151,336 +142,334 @@ export default function AgroactivaPage() {
         </div>
       </section>
 
-      {/* Event Information */}
-      <section className="py-20 bg-white">
+      {/* About Section */}
+      <section id="about" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-8 mb-16">
-            <Card className="text-center border-0 shadow-lg">
-              <CardHeader>
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="w-8 h-8 text-green-600" />
-                </div>
-                <CardTitle className="text-xl">Fecha del Evento</CardTitle>
-                <CardDescription className="text-lg">Junio 2025</CardDescription>
-              </CardHeader>
-            </Card>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Sobre nuestra Escuela</h2>
+            <p className="text-gray-600 mb-4 text-xl max-w-3xl mx-auto">
+              Somos una escuela ProA con orientación en Desarrollo de Software. Combinamos formación académica con
+              proyectos reales y metodologías activas. Promovemos trayectorias personalizadas y buscamos formar jóvenes
+              críticos, autónomos y comprometidos con su entorno.
+            </p>
+          </div>
 
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             <Card className="text-center border-0 shadow-lg">
               <CardHeader>
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-blue-600" />
+                  <Users className="w-8 h-8 text-blue-600" />
                 </div>
-                <CardTitle className="text-xl">Ubicación</CardTitle>
-                <CardDescription className="text-lg">Armstrong, Santa Fe</CardDescription>
+                <CardTitle className="text-2xl">170+</CardTitle>
+                <CardDescription className="text-lg">Estudiantes</CardDescription>
               </CardHeader>
             </Card>
-
+            <Card className="text-center border-0 shadow-lg">
+              <CardHeader>
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="w-8 h-8 text-green-600" />
+                </div>
+                <CardTitle className="text-2xl">95%</CardTitle>
+                <CardDescription className="text-lg">Proyectos terminados</CardDescription>
+              </CardHeader>
+            </Card>
             <Card className="text-center border-0 shadow-lg">
               <CardHeader>
                 <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-purple-600" />
+                  <BookOpen className="w-8 h-8 text-purple-600" />
                 </div>
-                <CardTitle className="text-xl">Visitantes</CardTitle>
-                <CardDescription className="text-lg">+200,000 personas</CardDescription>
+                <CardTitle className="text-2xl">50+</CardTitle>
+                <CardDescription className="text-lg">Egresados</CardDescription>
               </CardHeader>
             </Card>
           </div>
 
-          {/* About Agroactiva */}
-          <div className="bg-gray-50 rounded-2xl p-8 lg:p-12 mb-16">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">¿Qué es Agroactiva?</h2>
-                <p className="text-lg text-gray-600 mb-6">
-                  Agroactiva es la muestra a campo más importante de Argentina y una de las más relevantes de
-                  Sudamérica. Durante cuatro días, reúne a productores, empresarios, técnicos, estudiantes y
-                  profesionales del sector agropecuario de todo el país y el exterior.
-                </p>
+                <h3 className="text-2xl lg:text-3xl font-bold text-blue-900 mb-6">Nuestra Misión y Visión</h3>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold text-cyan-500 mb-2">Misión</h4>
+                    <p className="text-gray-600 mb-4">
+                      Nuestra escuela tiene como misión formar personas comprometidas con su comunidad, capaces de
+                      pensar soluciones reales a los problemas que nos rodean. Creemos que la educación no debe quedarse
+                      solo en los libros, sino que tiene que salir al mundo y transformarlo.
+                    </p>
 
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                    <p className="text-gray-600">Más de 500 empresas expositoras</p>
+                    <p className="text-gray-600 mb-4">
+                      Por eso impulsamos proyectos que nacen de las ideas y preocupaciones de los estudiantes. Ya sea
+                      buscando maneras de cuidar el ambiente, ayudar a quienes más lo necesitan o mejorar aspectos de la
+                      vida cotidiana, cada proyecto es una oportunidad para marcar la diferencia.
+                    </p>
+
+                    <p className="text-gray-600">
+                      Queremos que lo que se aprende en el aula sirva para actuar, para construir, para cambiar. Nuestra
+                      meta es que el conocimiento se convierta en acción, y que esa acción ayude a que la vida de las
+                      personas sea un poco más fácil.
+                    </p>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                    <p className="text-gray-600">Demostraciones de maquinaria en vivo</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                    <p className="text-gray-600">Conferencias técnicas y capacitaciones</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                    <p className="text-gray-600">Espacio dedicado a la innovación y tecnología</p>
+                  <div>
+                    <h4 className="text-lg font-semibold text-cyan-500 mb-2">Visión</h4>
+                    <p className="text-gray-600 mb-4">
+                      Soñamos con una escuela que sea un espacio de creatividad, participación y compromiso social. Una
+                      escuela que inspire a sus estudiantes a mirar el mundo con ojos críticos, pero también con
+                      esperanza, y que los motive a buscar soluciones para construir un futuro mejor.
+                    </p>
+
+                    <p className="text-gray-600 mb-4">
+                      Nos proyectamos como una comunidad educativa que forma ciudadanos solidarios, responsables y
+                      capaces de liderar cambios positivos. Queremos ser reconocidos por promover proyectos que no solo
+                      enseñen, sino que también impacten de manera concreta en la vida de las personas.
+                    </p>
+
+                    <p className="text-gray-600">
+                      Nuestra visión es una escuela que no se encierra, sino que se abre al entorno, dialoga con él y se
+                      involucra activamente para transformar la realidad.
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="space-y-6">
                 <Image
-                  src="/images/agroactiva-aerial.jpg"
-                  alt="Vista aérea de Agroactiva - La muestra agropecuaria más importante de Argentina"
-                  width={500}
-                  height={400}
-                  className="rounded-xl shadow-lg"
+                  src="/images/students-laboratory.jpg"
+                  alt="Students working collaboratively in laboratory at Escuela Experimental PRoA"
+                  width={400}
+                  height={300}
+                  className="rounded-xl shadow-lg object-cover w-full"
                 />
-                {/* Botón centrado debajo de la imagen en dispositivos grandes */}
-                <div className="mt-6 hidden lg:block">
-                  <Link
-                    href="https://agroactiva.com/agroactiva2025"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center"
-                  >
-                    <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg">
-                      Visitar sitio oficial de Agroactiva
-                      <svg
-                        className="w-4 h-4 ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
-                    </Button>
-                  </Link>
-                </div>
+                <Image
+                  src="/images/electronics-project.jpg"
+                  alt="Electronics and circuit board project at Escuela Experimental PRoA"
+                  width={400}
+                  height={300}
+                  className="rounded-xl shadow-lg object-cover w-full"
+                />
               </div>
-            </div>
-
-            {/* Botón centrado para dispositivos pequeños y medianos */}
-            <div className="mt-12 text-center lg:hidden">
-              <Link
-                href="https://agroactiva.com/agroactiva2025"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center"
-              >
-                <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg">
-                  Visitar sitio oficial de Agroactiva
-                  <svg
-                    className="w-4 h-4 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </Button>
-              </Link>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Our Participation */}
-          <div className="space-y-16">
-            <div className="text-center">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Nuestra Participación</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Fuimos invitados a participar en el sector de innovación educativa de Córdoba, donde presentamos
-                nuestros proyectos de infiltrómetro e invernadero automático.
-              </p>
-            </div>
+      {/* Featured Projects Section */}
+      <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Proyectos de investigación destacados</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              En nuestra escuela impulsamos proyectos que combinan el aprendizaje con la acción. A través de la
+              tecnología y la creatividad, buscamos resolver problemáticas reales, mejorar la calidad de vida y cuidar
+              el ambiente.
+            </p>
+          </div>
 
-            {/* Projects Showcase */}
-            <div className="grid lg:grid-cols-2 gap-12">
-              <Card className="overflow-hidden shadow-xl border-0">
-                <div className="relative h-64">
-                  <Image
-                    src="/images/infiltrometer-project.jpg"
-                    alt="Infiltrometer at Agroactiva"
-                    width={600}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-blue-600 text-white">Proyecto Destacado</Badge>
-                  </div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Proyecto infiltrometro */}
+            <Card className="overflow-hidden shadow-xl border-0">
+              <div className="relative h-64">
+                <Image
+                  src="/images/infiltrometer-project.jpg"
+                  alt="Infiltrometer Device at Escuela Experimental PRoA"
+                  width={600}
+                  height={300}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-blue-600 text-white">
+                    <Droplets className="w-4 h-4 mr-1" />
+                    Ciencias Ambientales
+                  </Badge>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-gray-900">Infiltrómetro en Agroactiva</CardTitle>
-                  <CardDescription className="text-base text-gray-600">
-                    Demostraciones en vivo del funcionamiento del dispositivo
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-700 leading-relaxed">
-                    Nuestro infiltrómetro captó la atención de productores y técnicos agropecuarios. Realizamos
-                    demostraciones en vivo mostrando cómo el dispositivo mide la humedad del suelo y envía datos por
-                    SMS.
-                  </p>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-900">Logros en el evento:</h4>
-                    <ul className="text-sm text-gray-600 space-y-1 ml-4">
-                      <li>• Muchas consultas de productores interesados</li>
-                      <li>• Entrevistas en medios especializados</li>
-                      <li>• Contactos con personas del sector tecnológico</li>
-                      <li>• Invitación a participar en otros eventos</li>
-                    </ul>
-                  </div>
-                  <div className="pt-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-blue-600 border-blue-200 hover:bg-blue-50"
-                      onClick={() => navigateToProject("infiltrometro")}
-                    >
-                      Ver más detalles
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="overflow-hidden shadow-xl border-0">
-                <div className="relative h-64">
-                  <Image
-                    src="/images/greenhouse-project.jpg"
-                    alt="Greenhouse at Agroactiva"
-                    width={600}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-green-600 text-white">Innovación Sustentable</Badge>
-                  </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl text-gray-900">Invernaculo Sustentable</CardTitle>
-                  <CardDescription className="text-base text-gray-600">
-                    Modelo funcional con materiales reciclados
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-gray-700 leading-relaxed">
-                    El invernadero automático fue un éxito por su enfoque en la sustentabilidad y el uso de materiales
-                    reciclados. Muchas familias se interesaron en replicar el modelo en sus hogares.
-                  </p>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-900">Impacto generado:</h4>
-                    <ul className="text-sm text-gray-600 space-y-1 ml-4">
-                      <li>• Muchas familias solicitaron el proyecto</li>
-                      <li>• Reconocimiento por innovación sustentable</li>
-                      <li>• Propuesta de escalamiento del proyecto</li>
-                    </ul>
-                  </div>
-                  <div className="pt-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-green-600 border-green-200 hover:bg-green-50"
-                      onClick={() => navigateToProject("invernadero")}
-                    >
-                      Ver más detalles
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Impact and Recognition */}
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 lg:p-12">
-              <div className="text-center mb-12">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">Impacto y Reconocimientos</h3>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Nuestra participación en Agroactiva generó un impacto significativo y nos permitió establecer
-                  conexiones valiosas para el futuro de nuestros proyectos.
+              </div>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-2xl text-gray-900">Proyecto de "Infiltrómetro"</CardTitle>
+                <CardDescription className="text-base text-gray-600">
+                  Medición automatizada de la humedad en distintas capas del suelo
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  Este dispositivo se entierra en el suelo y mide la humedad en distintas capas gracias a sensores
+                  colocados a diferentes profundidades. Los datos se visualizan en una pantalla LCD y se envían por SMS.
                 </p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-8 h-8 text-blue-600" />
+                <Separator />
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-500">
+                    <span className="font-medium">Presentado en Agroactiva 2025</span>
                   </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Networking</h4>
-                  <p className="text-gray-600">
-                    Establecimos contactos con varias personas y organizaciones del sector agropecuario.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Lightbulb className="w-8 h-8 text-green-600" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Innovación</h4>
-                  <p className="text-gray-600">
-                    Nuestros proyectos fueron reconocidos como ejemplos de innovación educativa aplicada.
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Target className="w-8 h-8 text-purple-600" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-gray-900 mb-2">Proyección</h4>
-                  <p className="text-gray-600">
-                    Recibimos invitaciones para participar en otros eventos y ferias tecnológicas.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Student Testimonials */}
-            <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Testimonios de Nuestros Estudiantes</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
-                  <p className="text-gray-600 italic mb-4">
-                    "Participar en Agroactiva fue increíble. Ver cómo nuestro proyecto del infiltrómetro interesaba a
-                    tantos productores nos hizo sentir que realmente estamos haciendo algo útil."
-                  </p>
-                  <p className="font-semibold text-gray-900">- Estudiante de 6º año</p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-lg border-l-4 border-green-500">
-                  <p className="text-gray-600 italic mb-4">
-                    "Fue emocionante explicar nuestro invernadero a familias que querían replicarlo en sus casas. Nos
-                    dimos cuenta de que la tecnología puede ayudar a resolver problemas reales."
-                  </p>
-                  <p className="font-semibold text-gray-900">- Estudiante de 5º año</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Call to Action */}
-            <div className="text-center">
-              <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
-                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                  ¿Querés conocer más sobre nuestros proyectos?
-                </h3>
-                <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                  Si te interesó nuestra participación en Agroactiva y querés conocer más detalles sobre nuestros
-                  proyectos, no dudes en contactarnos.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button
-                    size="lg"
-                    className="bg-blue-600 hover:bg-blue-700 text-white"
-                    onClick={() => navigateToPage("/projects")}
-                  >
-                    Ver todos nuestros proyectos
-                  </Button>
                   <Button
                     variant="outline"
-                    size="lg"
-                    className="border-green-200 text-green-600 hover:bg-green-50"
-                    onClick={() => navigateToPage("/contact")}
+                    size="sm"
+                    className="text-blue-600 border-blue-200 hover:bg-blue-50"
+                    onClick={() => navigateToProject("infiltrometro")}
                   >
-                    Contáctanos
+                    Ver más
                   </Button>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Proyecto Invernaculo */}
+            <Card className="overflow-hidden shadow-xl border-0">
+              <div className="relative h-64">
+                <Image
+                  src="/images/greenhouse-project.jpg"
+                  alt="Smart Greenhouse Project at Escuela Experimental PRoA"
+                  width={600}
+                  height={300}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-4 left-4">
+                  <Badge className="bg-green-600 text-white">
+                    <Leaf className="w-4 h-4 mr-1" />
+                    Agricultura Sustentable
+                  </Badge>
+                </div>
               </div>
+              <CardHeader className="pb-4">
+                <CardTitle className="text-2xl text-gray-900">Proyecto "Invernaculo Automático"</CardTitle>
+                <CardDescription className="text-base text-gray-600">
+                  Mini invernadero reciclado y autónomo para el cultivo familiar
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-gray-700 leading-relaxed">
+                  Un mini invernadero de 1m x 1m con techo de botellas recicladas, riego automático por sensores de
+                  humedad y ventilación inteligente según temperatura.
+                </p>
+                <Separator />
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-500">
+                    <span className="font-medium">Presentado en Agroactiva 2025</span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="text-green-600 border-green-200 hover:bg-green-50"
+                    onClick={() => navigateToProject("invernadero")}
+                  >
+                    Ver más
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-blue-200 text-blue-600 hover:bg-blue-50"
+              onClick={() => navigateToPage("/projects")}
+            >
+              Ver todos los proyectos
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Agroactiva Highlight */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 lg:p-12">
+            <div className="text-center mb-8">
+              <Badge className="bg-green-600 text-white mb-4 text-lg px-4 py-2">
+                <Award className="w-5 h-5 mr-2" />
+                Evento Nacional
+              </Badge>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Participamos en Agroactiva 2025</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Fuimos invitados a presentar nuestros proyectos en uno de los eventos agropecuarios más importantes de
+                Argentina, donde más de 200,000 visitantes conocieron nuestras innovaciones.
+              </p>
+            </div>
+            <div className="text-center">
+              <Button
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 text-white"
+                onClick={() => navigateToPage("/agroactiva")}
+              >
+                Conoce nuestra participación
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Contáctanos</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Si te interesan los proyectos que hacemos o querés colaborar con nosotros, no dudes en comunicarte.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="text-center border-0 shadow-lg">
+              <CardHeader>
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Phone className="w-8 h-8 text-blue-600" />
+                </div>
+                <CardTitle className="text-xl">Teléfono</CardTitle>
+                <CardDescription className="text-lg">+54 (3468) 64-4403</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="text-center border-0 shadow-lg">
+              <CardHeader>
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Mail className="w-8 h-8 text-green-600" />
+                </div>
+                <CardTitle className="text-xl">Email</CardTitle>
+                <CardDescription className="text-lg">info@escuelasproa.edu.ar</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="text-center border-0 shadow-lg">
+              <CardHeader>
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-8 h-8 text-purple-600" />
+                </div>
+                <CardTitle className="text-xl">Ubicación</CardTitle>
+                <CardDescription className="text-lg">Corral de Bustos-Ifflinger, Córdoba, Argentina</CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white"
+              onClick={() => navigateToPage("/contact")}
+            >
+              Ver información completa de contacto
+            </Button>
+          </div>
+
+          <div className="text-center mt-12">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Síguenos en Redes Sociales</h3>
+            <div className="flex justify-center gap-6">
+              <Link
+                href="https://www.instagram.com/proacorraldebustos?igsh=d3N1Y290YWo3MmVi"
+                target="_blank"
+                className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:scale-110 transition-transform duration-200"
+              >
+                <Instagram className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://www.facebook.com/proa.corraldebustos"
+                target="_blank"
+                className="flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:scale-110 transition-transform duration-200"
+              >
+                <Facebook className="w-6 h-6" />
+              </Link>
+              <Link
+                href="https://whatsapp.com/channel/0029VbB3gHz5a243u3A4IZ3j"
+                target="_blank"
+                className="flex items-center justify-center w-12 h-12 bg-green-500 text-white rounded-full hover:scale-110 transition-transform duration-200"
+              >
+                <MessageCircle className="w-6 h-6" />
+              </Link>
             </div>
           </div>
         </div>
@@ -531,9 +520,9 @@ export default function AgroactivaPage() {
               <h4 className="font-semibold mb-4">Enlaces rápidos</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <button onClick={navigateToHome} className="hover:text-white transition-colors text-left">
-                    Inicio
-                  </button>
+                  <Link href="#about" className="hover:text-white transition-colors">
+                    Sobre nosotros
+                  </Link>
                 </li>
                 <li>
                   <button
@@ -544,7 +533,12 @@ export default function AgroactivaPage() {
                   </button>
                 </li>
                 <li>
-                  <span className="text-white">Agroactiva</span>
+                  <button
+                    onClick={() => navigateToPage("/agroactiva")}
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Agroactiva
+                  </button>
                 </li>
                 <li>
                   <button
@@ -593,7 +587,12 @@ export default function AgroactivaPage() {
                   </button>
                 </li>
                 <li>
-                  <span className="text-white">Participación en Eventos</span>
+                  <button
+                    onClick={() => navigateToPage("/agroactiva")}
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Participación en Eventos
+                  </button>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-white transition-colors">
